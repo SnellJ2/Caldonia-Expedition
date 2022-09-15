@@ -3,9 +3,10 @@
 #include <fstream>
 #include <sstream>
 #include <typeinfo>
+#include "tutorial.h"
 using namespace std;
-int characterClass;
 int saveState[20]; //see guide for info, so far state 0 is character class
+string playerName;
 
 int main(int argc,char * argv[])
 {
@@ -78,6 +79,48 @@ int main(int argc,char * argv[])
   		{
   			cout << "Invalid choice please try again" << endl;
   		}
+  	}
+
+  
+  	while(true) //get player name 
+  	{
+  		cout << "Please enter your name for your character name: " << endl;
+  		cin >> playerName;
+  		if(playerName.length() <= 50)
+  		{
+  			cout << "Name accepted as \"" << playerName << "\" are you sure this is the name you want, you can not change it later [Y/N]" << endl;
+  			cin >> choice;
+  			if(tolower(choice) == 'y')
+  			{
+  				break; //breaks loop when acceptable length and the user likes it.
+  			}
+  			
+  		}
+  		else
+  		{
+  			cout << "Please keep character limit under 50 characters" << endl;
+  		}
+  	} 
+
+  	while(true)
+  	{
+  		cout << "Would you like to play the tutorial? [Y/N]" << endl;
+  		cin >> choice;
+  		if(tolower(choice) == 'y')
+  		{
+  			tutorial tObj(saveState[0]);
+  			tObj.~tutorial();
+  			break;
+  		}
+  		else if(tolower(choice) == 'n')
+  		{
+  			break;
+  		}
+  		else
+  		{
+  			cout << "Please enter Y (yes) or N (no) only " << endl;
+  		}
+
   	}
 
   	try	//closing statement
