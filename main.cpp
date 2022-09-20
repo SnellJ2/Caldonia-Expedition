@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <typeinfo>
+#include <stdio.h>
 #include "tutorial.h"
 using namespace std;
 int saveState[20]; //see guide for info, so far state 0 is character class
